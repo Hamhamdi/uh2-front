@@ -1,0 +1,105 @@
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by title"
+        [(ngModel)]="title"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchTitle()"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="col-md-6">
+    <h4>Products List</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let product of products; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveProduct(product, i)"
+      >
+        {{ product.title }}
+      </li>
+    </ul>
+
+    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllProducts()">
+      Remove All
+    </button>
+  </div> -->
+  <div class="col-md-6">
+    <div *ngIf="currentProduct">
+      <h4>Product</h4>
+      <div>
+        <label><strong>Title:</strong></label> {{ currentProduct.title }}
+      </div>
+      <div>
+        <label><strong>Description:</strong></label>
+        {{ currentProduct.description }}
+      </div>
+      <div>
+        <label><strong>Status:</strong></label>
+        {{ currentProduct.published ? "Published" : "Pending" }}
+      </div>
+
+      <a class="badge badge-warning" routerLink="/products/{{ currentProduct.id }}">
+        Edit
+      </a>
+    </div>
+
+    <!-- <div *ngIf="!currentProduct">
+      <br />
+      <p>Please click on a Product...</p>
+    </div> -->
+  </div>
+</div>
+<div *ngFor="let product of products" class="row">
+  <div class="card col-md-4 mb-4" >
+    <img src="{{ product.image }}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{ product.productName }}</h5>
+      <span *ngIf="product.available" class="badge badge-success">Disponible</span> 
+      <span *ngIf="!product.available" class="badge badge-danger">Rupture de stock</span> 
+      <p class="card-text">{{ product.description }}</p>
+      <!-- Button trigger modal -->
+
+      <a class="btn btn-warning" routerLink="/products/{{ product.id }}">
+        Acheter a {{ product.productPrice }}
+      </a>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">RS5: Details techniques</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Toujours le même V6 2,9 l biturbo de 450 ch, la même voix (un peu plus timide que l'ancien V8) et les mêmes chronos ! Mis à part son faciès revu, devenu un peu plus agressif, les différences visuelles restent limitées. Les feux arrière, le nouveau dessin des jantes... et c'est tout. La mise à jour est surtout notable à l'intérieur, avec la même évolution que le reste de la gamme A4 / A5 et concerne surtout l'interface média. L'écran central, plus grand, est devenu tactile et la molette centrale disparait.
+
+  Cela dit, le principal point d'intérêt d'une RS5 ne se cantonne pas à de banals gadgets numériques. Le V6 2,9 l biturbo, inauguré en remplacement du V8 4,2 l atmosphérique de même puissance, n'a pas bougé d'un iota. Les chronos restent aussi explosifs : 0 à 100 km/h en 3,9 s, et des relances canon (600 Nm de couple maxi...), en toute efficacité. Toujours scotchée au sol par un Quattro imperturbable.
+
+  La RS5 est disponible en Coupé et en 5 portes Sportback, à des tarifs débutant à 97.570 euros. 
+            </div>
+            <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

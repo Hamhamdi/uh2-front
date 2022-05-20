@@ -1,0 +1,97 @@
+<div>
+  <div *ngIf="currentProduct.id" class="edit-form">
+    <h4>Product</h4>
+    
+    <span *ngIf="currentProduct.available" class="badge badge-success">Disponible</span> 
+    <span *ngIf="!currentProduct.available" class="badge badge-danger">Rupture de stock</span> 
+    
+    <form>
+      <div class="form-group">
+        <label for="title">Image du produit</label>
+        <input
+          type="text"
+          class="form-control"
+          id="image"
+          required
+          [(ngModel)]="currentProduct.image"
+          name="image"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="title">Nom produit</label>
+        <input
+          type="text"
+          class="form-control"
+          id="productName"
+          required
+          [(ngModel)]="currentProduct.productName"
+          name="productName"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="title">Prix du produit</label>
+        <input
+          type="text"
+          class="form-control"
+          id="productPrice"
+          required
+          [(ngModel)]="currentProduct.productPrice"
+          name="productPrice"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="title">Description</label>
+        <input
+          type="text"
+          class="form-control"
+          id="description"
+          required
+          [(ngModel)]="currentProduct.description"
+          name="description"
+        />
+      </div>
+
+
+      <button class="btn btn-primary mr-3" (click)="updateProduct()" >Update</button>
+
+      <button class="btn btn-danger" (click)="deleteProduct()" >Delete</button>
+
+    </form>
+
+    <!-- <button
+      class="badge badge-primary mr-2"
+      *ngIf="currentProduct.published"
+      (click)="updatePublished(false)"
+    >
+      UnPublish
+    </button>
+    <button
+      *ngIf="!currentProduct.published"
+      class="badge badge-primary mr-2"
+      (click)="updatePublished(true)"
+    >
+      Publish
+    </button>
+
+    <button class="badge badge-danger mr-2" (click)="deleteProduct()">
+      Delete
+    </button>
+
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateProduct()"
+    >
+      Update
+    </button> -->
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentProduct.id">
+    <br />
+    <p>Cannot access this Product...</p>
+  </div>
+</div>

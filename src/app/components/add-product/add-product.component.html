@@ -1,0 +1,61 @@
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+
+      <div class="form-group">
+        <label for="title">Image du produit</label>
+        <input
+          type="text"
+          class="form-control"
+          id="image"
+          required
+          [(ngModel)]="product.image"
+          name="image"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="title">Nom produit</label>
+        <input
+          type="text"
+          class="form-control"
+          id="productName"
+          required
+          [(ngModel)]="product.productName"
+          name="productName"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="title">Prix du produit</label>
+        <input
+          type="text"
+          class="form-control"
+          id="productPrice"
+          required
+          [(ngModel)]="product.productPrice"
+          name="productPrice"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="title">Description</label>
+        <input
+          type="text"
+          class="form-control"
+          id="description"
+          required
+          [(ngModel)]="product.description"
+          name="description"
+        />
+      </div>
+
+      <button (click)="saveProduct()" class="btn btn-success">Ajouter</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h4>Product was submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newProduct()">Add</button>
+    </div>
+  </div>
+</div>
